@@ -56,7 +56,7 @@ export function NavbarDashboard() {
         <div className="flex">
           {/* <NavigationButtons /> */}
           <Link to={ROUTES_PATH.dashboard}>
-            <img src="/logo.png" alt="logo" className="h-8" />
+            <img src="/maskan.png" alt="logo" className="h-8" />
           </Link>
         </div>
       </div>
