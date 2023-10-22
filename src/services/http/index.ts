@@ -90,6 +90,7 @@ export class Http {
   initHttp() {
     const http = axios.create({
       baseURL: this.baseUrl,
+      timeout: 20000,// Set the global timeout to 20 seconds
       headers,
       // withCredentials: true,
     });
