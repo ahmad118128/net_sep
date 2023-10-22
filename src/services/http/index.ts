@@ -49,8 +49,7 @@ function handleResponseError(data: any): string {
         errorMessage += `🔸${k}: ${v}`;
       });
     } else {
-            console.log('error 3:' , data);
-
+      console.log('error 3:' , data);
       errorMessage = "با پشتیبانی تماس بگیرید.";
     }
   });
@@ -211,13 +210,11 @@ export class Http {
           }
           default:
             console.log('error 1:' , error);
-            
             throw "با پشتیبانی تماس بگیرید.";
         }
       }
     }
-            console.log('error 2:' , error);
-
+    console.log('error 2:' , error);
     throw "با پشتیبانی تماس بگیرید.";
   }
 }
