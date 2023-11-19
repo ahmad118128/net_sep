@@ -20,7 +20,14 @@ export interface IDaAs {
   time_limit_value_in_hour: number;
   is_running?: boolean | string;
   usage_in_minute: number | string;
-  access_mode: EAccessMode | string;
+  can_upload_file: boolean | string;
+  can_download_file: boolean;
+  clipboard_down: boolean;
+  clipboard_up: boolean;
+  forbidden_upload_files: string[] | null;
+  forbidden_download_files: string[] | null;
+  webcam_privilege: boolean;
+  microphone_privilege: boolean;
 }
 
 export interface IBodyUsersLogin {
