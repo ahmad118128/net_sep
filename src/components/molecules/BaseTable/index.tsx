@@ -58,7 +58,11 @@ export function BaseTable({ headers, data, loading, onClick }) {
 									) : (
 										<CircleBg bgColor={item[header.type] ? 'bg-green-600' : 'bg-gray-400'} />
 									)}
-									{header.component}
+									{header.component &&
+										React.createElement(header.component, {
+											user: item,
+											onClickActions: header.function,
+										})}
 
 									{header.type === 'accessTime' && (
 										<SetAccessTime

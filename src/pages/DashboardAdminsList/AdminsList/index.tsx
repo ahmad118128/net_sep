@@ -122,6 +122,8 @@ export function AdminsList() {
 		fileType?: StringifyProperties<IUser> | IUser
 	): any {
 		setActiveAdmin(fileType as IUser);
+		console.log('CALL');
+		console.log(fileType, 'ACTION');
 
 		if (action === 'delete') {
 			setDeleteModal(true);
@@ -140,6 +142,7 @@ export function AdminsList() {
 		// }
 	}
 
+	console.log(activeAdmin, 'ACTION   =>');
 	const handleCreateAdmin = () => {
 		activeAdmin && setActiveAdmin(undefined);
 		setOpenUpdateModal(true);
@@ -151,8 +154,8 @@ export function AdminsList() {
 			label: '',
 			type: '',
 			modal: '',
-			component: <UserAdminAction onClickActions={handleOnClickActions} key={} />,
-			function: false,
+			component: UserAdminAction,
+			function: handleOnClickActions,
 			style: 'px-3 w-2/12   ',
 			size: '',
 			scroll: '',
