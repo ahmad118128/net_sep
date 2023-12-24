@@ -2,7 +2,7 @@ import { IconButton } from '@ui/atoms/BaseButton';
 import notePencilIcon from '@iconify-icons/ph/note-pencil';
 import trashIcon from '@iconify-icons/ph/trash';
 
-export function userAdminAction({ onClickActions, key }) {
+export function UserAdminAction({ onClickActions, key }) {
 	return (
 		<div className="flex">
 			<IconButton icon={trashIcon} color="redNoBg" onClick={() => onClickActions('delete', key)} />

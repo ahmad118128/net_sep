@@ -1,3 +1,4 @@
+import React from 'react';
 import { Card, Typography } from '@ui/atoms';
 import { LoadingSpinner } from '../Loading';
 import { NoResult } from '../NoResult';
@@ -37,12 +38,25 @@ export function BaseTable({ headers, data, loading, onClickActions }) {
 									className={`${header.style} flex justify-center items-center uppercase `}
 									dir={!header.dir ? 'ltr' : header.dir}>
 									{!header.status ? (
-										<Typography size="body3" type="div" className="uppercase">
-											{header.function ? header.function(item[header.type]) : item[header.type]}
+										<Typography
+											size="body3"
+											type="div"
+											className="text-xl uppercase whitespace-no-wrap break-all ">
+											{Array.isArray(header.type)
+												? header.type.map((i, index) => (
+														<React.Fragment key={index}>
+															{index > 0 && ' '}
+															<span className="">{item[i]}</span>
+														</React.Fragment>
+												  ))
+												: header.function
+												? header.function(item[header.type])
+												: item[header.type]}
 										</Typography>
 									) : (
 										<CircleBg bgColor={item[header.type] ? 'bg-green-600' : 'bg-gray-400'} />
 									)}
+									{header.component}
 									{/* {header.type(
 										<IconButton
 											icon={header.icon.icon}

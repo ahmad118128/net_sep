@@ -23,36 +23,36 @@ import { API_USERS_DELETE } from '@src/services/users';
 import { BaseTable } from '@ui/molecules/BaseTable';
 import { persianDateAndNumber } from '@src/helper/utils/dateUtils';
 import { booleanIcon } from './utils';
-import { userAdminAction } from './UserAdminAction';
+import { UserAdminAction } from './UserAdminAction';
 
 const PAGE_SIZE = 10;
 const PAGE = 1;
 
-const headerItem: StringifyProperties<IUser> = {
-	id: '',
-	email: 'ایمیل',
-	last_login: 'آخرین ورود',
-	username: 'نام کاربری',
-	first_name: 'نام و نام خانوادگی',
-	is_active: 'فعال',
-	created_at: 'تاریخ ایجاد',
-	is_meta_admin: 'سوپر ادمین',
-	last_name: '',
+// const headerItem: StringifyProperties<IUser> = {
+// 	id: '',
+// 	email: 'ایمیل',
+// 	last_login: 'آخرین ورود',
+// 	username: 'نام کاربری',
+// 	first_name: 'نام و نام خانوادگی',
+// 	is_active: 'فعال',
+// 	created_at: 'تاریخ ایجاد',
+// 	is_meta_admin: 'سوپر ادمین',
+// 	last_name: '',
 
-	is_superuser: 'boolean',
-	exceeded_usage: 'boolean',
-	base_url: 'string',
-	is_staff: 'boolean',
-	date_joined: 'string',
-	http_port: 'number',
-	https_port: 'number',
-	time_limit_duration: 'ETimeLimitDuration',
-	time_limit_value_in_hour: 'number',
-	last_uptime: 'string',
-	is_running: 'boolean',
-	exceeded_time_limit: 'boolean',
-	usage_in_minute: 'number',
-};
+// 	is_superuser: 'boolean',
+// 	exceeded_usage: 'boolean',
+// 	base_url: 'string',
+// 	is_staff: 'boolean',
+// 	date_joined: 'string',
+// 	http_port: 'number',
+// 	https_port: 'number',
+// 	time_limit_duration: 'ETimeLimitDuration',
+// 	time_limit_value_in_hour: 'number',
+// 	last_uptime: 'string',
+// 	is_running: 'boolean',
+// 	exceeded_time_limit: 'boolean',
+// 	usage_in_minute: 'number',
+// };
 
 export function AdminsList() {
 	const [currentPage, setCurrentPage] = useState<number>(PAGE);
@@ -151,9 +151,9 @@ export function AdminsList() {
 		{
 			id: '',
 			label: '',
-			type: 'username',
+			type: '',
 			modal: '',
-			component: <userAdminAction onClickActions={handleOnClickActions} />,
+			component: <UserAdminAction onClickActions={handleOnClickActions} />,
 			function: false,
 			style: 'px-3 w-2/12   ',
 			size: '',
@@ -182,7 +182,7 @@ export function AdminsList() {
 		{
 			id: '',
 			label: 'نام و نام خانوادگی',
-			type: 'first_name',
+			type: ['first_name', 'last_name'],
 			modal: '',
 			function: false,
 			style: 'px-3 w-2/12   ',
@@ -249,16 +249,7 @@ export function AdminsList() {
 					<IconButton icon={plusIcon} color="teal" size="lg" onClick={handleCreateAdmin} />
 				</ToolTip>
 			</div>
-			{/* <UserAdminCard user={headerItem} isHeader />
-			{isLoading ? (
-				<LoadingSpinner />
-			) : listWhiteList.length > 0 ? (
-				listWhiteList.map((item) => (
-					<UserAdminCard key={item.id} user={item} onClickActions={handleOnClickActions} />
-				))
-			) : (
-				<NoResult />
-			)} */}
+
 			<BaseTable headers={headerData} data={listWhiteList} loading={isLoading} />
 			{!!countPage && (
 				<Pagination
