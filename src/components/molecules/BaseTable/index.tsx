@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Card, Typography } from '@ui/atoms';
 import { LoadingSpinner } from '../Loading';
 import { NoResult } from '../NoResult';
 import { CircleBg } from '@ui/atoms/CircleBg';
 import { IconButton } from '@ui/atoms/BaseButton';
+import { IDaasConfig } from '@src/services/config/types';
+import { SetAccessTime } from '@src/pages/DashboardDesktopList/DaAsList/DaAsCard/SetAccessTime';
 
-export function BaseTable({ headers, data, loading, onClickActions }) {
+export function BaseTable({ headers, data, loading, onClick }) {
 	return (
 		<>
 			{loading ? (
@@ -57,6 +59,16 @@ export function BaseTable({ headers, data, loading, onClickActions }) {
 										<CircleBg bgColor={item[header.type] ? 'bg-green-600' : 'bg-gray-400'} />
 									)}
 									{header.component}
+
+									{header.type === 'accessTime' && (
+										<SetAccessTime
+											id={item.id as string}
+											onClickActions={header.function}
+											timeLimitValue={item.daas_configs.time_limit_value_in_hour || 0}
+											timeLimitDuration={item.daas_configs.time_limit_duration}
+										/>
+									)}
+
 									{/* {header.type(
 										<IconButton
 											icon={header.icon.icon}

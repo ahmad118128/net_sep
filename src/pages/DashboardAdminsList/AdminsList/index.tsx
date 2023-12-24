@@ -5,10 +5,8 @@ import useSWR from 'swr';
 import { IResponsePagination } from '@src/types/services';
 import { http } from '@src/services/http';
 import { LoadingSpinner } from '@ui/molecules/Loading';
-import { UserAdminCard } from './UserAdminCard';
 import { StringifyProperties } from '@src/types/global';
 import { ActionOnClickActionsType } from './UserAdminCard/types';
-import { NoResult } from '@ui/molecules/NoResult';
 import Pagination from '@ui/molecules/Pagination';
 import { Modal } from '@ui/molecules/Modal';
 import { UpdateAdminModal } from './UpdateAdminModal';
@@ -153,7 +151,7 @@ export function AdminsList() {
 			label: '',
 			type: '',
 			modal: '',
-			component: <UserAdminAction onClickActions={handleOnClickActions} />,
+			component: <UserAdminAction onClickActions={handleOnClickActions} key={} />,
 			function: false,
 			style: 'px-3 w-2/12   ',
 			size: '',
