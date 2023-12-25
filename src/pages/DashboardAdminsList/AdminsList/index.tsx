@@ -22,6 +22,7 @@ import { BaseTable } from '@ui/molecules/BaseTable';
 import { persianDateAndNumber } from '@src/helper/utils/dateUtils';
 import { booleanIcon } from './utils';
 import { UserAdminAction } from './UserAdminAction';
+import { adminListTableData } from './adminListTableData';
 
 const PAGE_SIZE = 10;
 const PAGE = 1;
@@ -122,8 +123,6 @@ export function AdminsList() {
 		fileType?: StringifyProperties<IUser> | IUser
 	): any {
 		setActiveAdmin(fileType as IUser);
-		console.log('CALL');
-		console.log(fileType, 'ACTION');
 
 		if (action === 'delete') {
 			setDeleteModal(true);
@@ -148,95 +147,6 @@ export function AdminsList() {
 		setOpenUpdateModal(true);
 	};
 
-	const headerData = [
-		{
-			id: '',
-			label: '',
-			type: '',
-			modal: '',
-			component: UserAdminAction,
-			function: handleOnClickActions,
-			style: 'px-3 w-2/12   ',
-			size: '',
-			scroll: '',
-		},
-		{
-			id: '',
-			label: 'نام کاربری',
-			type: 'username',
-			modal: '',
-			function: false,
-			style: 'px-3 w-2/12   ',
-			size: '',
-			scroll: '',
-		},
-		{
-			id: '',
-			label: 'ایمیل',
-			type: 'email',
-			modal: '',
-			function: false,
-			style: 'px-3 w-2/12   ',
-			size: '',
-			scroll: '',
-		},
-		{
-			id: '',
-			label: 'نام و نام خانوادگی',
-			type: ['first_name', 'last_name'],
-			modal: '',
-			function: false,
-			style: 'px-3 w-2/12   ',
-			size: '',
-			scroll: '',
-		},
-		{
-			id: '',
-			label: 'فعال',
-			type: 'is_active',
-			modal: '',
-			function: false,
-			style: 'px-3 w-2/12   ',
-			status: 'is_active',
-			size: '',
-			scroll: '',
-		},
-		{
-			id: '',
-			label: 'سوپر ادمین',
-			type: 'is_meta_admin',
-			modal: '',
-			function: booleanIcon,
-			style: 'px-3 w-2/12   ',
-			size: '',
-			scroll: '',
-		},
-		{
-			id: '',
-			label: 'تاریخ ایجاد',
-			type: 'created_at',
-			dir: 'rtl',
-			modal: '',
-			icon: false,
-			function: persianDateAndNumber,
-			style: ' w-2/12 break-words',
-			size: '',
-			scroll: '',
-		},
-		{
-			id: '',
-			label: 'آخرین ورود',
-			type: 'last_login',
-			dir: 'rtl',
-			modal: '',
-			icon: false,
-			function: persianDateAndNumber,
-			style: ' w-2/12 break-words',
-			size: '',
-			scroll: '',
-		},
-	];
-
 	return (
 		<div className="w-full p-4">
 			<div className="flex justify-between items-center">
@@ -251,7 +161,12 @@ export function AdminsList() {
 				</ToolTip>
 			</div>
 
-			<BaseTable headers={headerData} data={listWhiteList} loading={isLoading} />
+			<BaseTable
+				headers={adminListTableData({ onchange: handleOnClickActions })}
+				data={listWhiteList}
+				loading={isLoading}
+				onClick={handleOnClickActions}
+			/>
 			{!!countPage && (
 				<Pagination
 					currentPage={currentPage}

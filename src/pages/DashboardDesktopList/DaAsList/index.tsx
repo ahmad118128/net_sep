@@ -1,7 +1,4 @@
 import { useCallback, useEffect, useState } from 'react';
-import { LoadingSpinner } from '@ui/molecules/Loading';
-import { NoResult } from '@ui/molecules/NoResult';
-import { DaAsCard } from './DaAsCard';
 import { API_DAAS_DELETE, API_DAAS_UPDATE } from '@src/services/users';
 import { ETimeLimitDuration } from '@src/services/users/types';
 import { IDaAs } from '@src/services/users/types';
@@ -21,7 +18,12 @@ import { createAPIEndpoint } from '@src/helper/utils';
 import { debounce } from 'lodash';
 import { SearchInput } from '@ui/atoms/Inputs/SearchInput';
 import { BaseTable } from '@ui/molecules/BaseTable';
-import { SetAccessTime } from './DaAsCard/SetAccessTime';
+import { desktopTableData } from '../desktopTableData';
+import { AccessUplaodEdit } from './DaAsCard/SetAccessUpload/AceessUploadEdit';
+import { DaAsCard } from './DaAsCard';
+import { LoadingSpinner } from '@ui/molecules/Loading';
+import { NoResult } from '@ui/molecules/NoResult';
+import trashIcon from '@iconify-icons/ph/trash';
 
 function compareExtensionLists(oldList?: string[], newList?: string[]) {
 	const removedList: string[] = [];
@@ -235,96 +237,6 @@ export function DaAsList() {
 			});
 	};
 
-	const headerData = [
-		{
-			id: '',
-			label: 'تنظیمات دسترسی',
-			type: 'can_upload_file',
-			modal: '',
-			component: '',
-			function: false,
-			style: 'px-3 w-2/12   ',
-			size: '',
-			scroll: '',
-		},
-		{
-			id: '',
-			label: ' تنظیمات زمان دسترسی  ',
-			type: 'accessTime',
-			modal: '',
-			function: handleOnClickActions,
-			style: 'px-3 w-2/12   ',
-			size: '',
-			scroll: '',
-		},
-		{
-			id: '',
-			label: 'استفاده',
-			type: '',
-			modal: '',
-			component: '',
-			function: false,
-			style: 'px-3 w-2/12   ',
-			size: '',
-			scroll: '',
-		},
-		{
-			id: '',
-			label: 'دسکتاپ',
-			type: '',
-			modal: '',
-			component: '',
-			function: false,
-			style: 'px-3 w-2/12   ',
-			size: '',
-			scroll: '',
-		},
-		{
-			id: '',
-			label: 'نسخه دسکتاپ',
-			type: '',
-			modal: '',
-			component: '',
-			function: false,
-			style: 'px-3 w-2/12   ',
-			size: '',
-			scroll: '',
-		},
-		{
-			id: '',
-			label: 'وضعیت',
-			type: '',
-			modal: '',
-			component: '',
-			function: false,
-			style: 'px-3 w-2/12   ',
-			size: '',
-			scroll: '',
-		},
-		{
-			id: '',
-			label: 'تنظیمات پیشفرض',
-			type: '',
-			modal: '',
-			component: '',
-			function: false,
-			style: 'px-3 w-2/12   ',
-			size: '',
-			scroll: '',
-		},
-		{
-			id: '',
-			label: 'ایمیل',
-			type: 'email',
-			modal: '',
-			component: '',
-			function: false,
-			style: 'px-3 w-2/12   ',
-			size: '',
-			scroll: '',
-		},
-	];
-
 	return (
 		<div className="w-full p-4">
 			<div className="flex items-center justify-between">
@@ -336,17 +248,11 @@ export function DaAsList() {
 				/>
 				<ResetAllAccessTime />
 			</div>
-			<BaseTable headers={headerData} data={listDaas} onClick={handleOnClickActions} />
-			{/* <DaAsCard daas={headerItem} isHeader />
-			{isLoading ? (
-				<LoadingSpinner />
-			) : listDaas.length > 0 ? (
-				listDaas.map((item) => (
-					<DaAsCard key={item.id} daas={item} onClickActions={handleOnClickActions} />
-				))
-			) : (
-				<NoResult />
-			)} */}
+			<BaseTable
+				headers={desktopTableData({ onchange: handleOnClickActions })}
+				data={listDaas}
+				onClick={handleOnClickActions}
+			/>
 			{!!countPage && (
 				<Pagination
 					currentPage={currentPage}

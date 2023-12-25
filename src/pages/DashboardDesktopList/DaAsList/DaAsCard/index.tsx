@@ -25,7 +25,6 @@ type ProductCardProps = {
 export function DaAsCard({ daas, isHeader, onClickActions }: ProductCardProps) {
 	const daasConfig = daas.daas_configs as IDaasConfig;
 
-	console.log(daas, 'mahdi');
 	return (
 		<>
 			<Card

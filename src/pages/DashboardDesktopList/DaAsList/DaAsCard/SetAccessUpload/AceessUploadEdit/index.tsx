@@ -1,26 +1,27 @@
 import { IDaAs } from '@src/services/users/types';
 import { IconButton } from '@ui/atoms/BaseButton';
+import { SetAccessUpload } from '..';
+import { OnClickActionsType } from '../../types';
+import trashIcon from '@iconify-icons/ph/trash';
 
-export function index({ onClickActions }) {
+type PropsType = {
+	user: IDaAs;
+	onClickActions?: OnClickActionsType;
+};
+export function AccessUplaodEdit({ onClickActions, user }: PropsType) {
 	return (
-		<>
-			<div className="w-1/12 flex justify-center items-center">
-				{!isHeader && onClickActions && (
-					<IconButton
-						icon={trashIcon}
-						color="redNoBg"
-						onClick={() => onClickActions('delete', daas as IDaAs)}
-					/>
-				)}
+		<div className="flex">
+			<div className="w-2/12 flex justify-center items-center">
+				<IconButton
+					icon={trashIcon}
+					color="redNoBg"
+					onClick={() => onClickActions('delete', user as IDaAs)}
+				/>
 			</div>
 
-			<div className="w-1/12 text-center break-words">
-				{!isHeader && onClickActions ? (
-					<SetAccessUpload daas={daas as IDaAs} onClickActions={onClickActions} />
-				) : (
-					<Typography size="body3">{daasConfig.can_upload_file}</Typography>
-				)}
+			<div className="w-2/12 text-center break-words">
+				<SetAccessUpload daas={user as IDaAs} onClickActions={onClickActions} />
 			</div>
-		</>
+		</div>
 	);
 }

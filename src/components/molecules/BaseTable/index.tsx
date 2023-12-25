@@ -1,13 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Card, Typography } from '@ui/atoms';
 import { LoadingSpinner } from '../Loading';
 import { NoResult } from '../NoResult';
 import { CircleBg } from '@ui/atoms/CircleBg';
+
 import { IconButton } from '@ui/atoms/BaseButton';
-import { IDaasConfig } from '@src/services/config/types';
 import { SetAccessTime } from '@src/pages/DashboardDesktopList/DaAsList/DaAsCard/SetAccessTime';
 
-export function BaseTable({ headers, data, loading, onClick }) {
+export function BaseTable(props) {
+	const { headers, data, loading, onClick } = props;
+
+	const typeCondition = (key: string, data: any) => {
+		if (key === 'usage_in_minute') {
+			return typeof data[key] === 'string' ? data[key] : `${Math.floor(data[key])} دقیقه`;
+		}
+
+		return data[key];
+	};
+
 	return (
 		<>
 			{loading ? (
@@ -17,9 +27,9 @@ export function BaseTable({ headers, data, loading, onClick }) {
 					<Card
 						color="neutral"
 						className="flex items-center px-2 my-2 w-full bg-teal-500 text-white h-10">
-						{headers.map((header) => (
+						{headers.map((header, i) => (
 							<div
-								key={header.type}
+								key={i}
 								className={`${header.style} flex justify-center items-center `}
 								dir={!header.dir ? 'ltr' : header.dir}>
 								<Typography size="body3" type="div" className="uppercase">
@@ -39,7 +49,9 @@ export function BaseTable({ headers, data, loading, onClick }) {
 									key={i}
 									className={`${header.style} flex justify-center items-center uppercase `}
 									dir={!header.dir ? 'ltr' : header.dir}>
-									{!header.status ? (
+									{header.status ? (
+										<CircleBg bgColor={item[header.type] ? 'bg-green-600' : 'bg-gray-400'} />
+									) : (
 										<Typography
 											size="body3"
 											type="div"
@@ -53,34 +65,18 @@ export function BaseTable({ headers, data, loading, onClick }) {
 												  ))
 												: header.function
 												? header.function(item[header.type])
-												: item[header.type]}
+												: typeCondition(header.type, item)}
 										</Typography>
-									) : (
-										<CircleBg bgColor={item[header.type] ? 'bg-green-600' : 'bg-gray-400'} />
 									)}
-									{header.component &&
-										React.createElement(header.component, {
-											user: item,
-											onClickActions: header.function,
-										})}
-
-									{header.type === 'accessTime' && (
-										<SetAccessTime
-											id={item.id as string}
-											onClickActions={header.function}
-											timeLimitValue={item.daas_configs.time_limit_value_in_hour || 0}
-											timeLimitDuration={item.daas_configs.time_limit_duration}
-										/>
-									)}
-
-									{/* {header.type(
-										<IconButton
-											icon={header.icon.icon}
-											color={header.icon.color}
-											className={header.icon.style}
-											onClick={() => onClickActions(item, 'user')}
-										/>
-									)} */}
+									{header.type === 'component' && <header.component {...props} item={item} />}
+									{header.type === 'action' &&
+										header.actions.map((action, index) => (
+											<IconButton
+												key={index}
+												{...action}
+												onClick={() => onClick(action.action, item)}
+											/>
+										))}
 								</div>
 							))}
 						</Card>

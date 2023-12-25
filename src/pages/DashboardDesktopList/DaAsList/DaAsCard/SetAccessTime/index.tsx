@@ -73,8 +73,6 @@ export function SetAccessTime({
 		mode: 'onChange',
 	});
 
-	console.log('timeLimitValue', timeLimitValue);
-	console.log('timeLimitDuration', timeLimitDuration);
 	useEffect(() => {
 		if (timeLimitDuration && timeLimitValue) {
 			reset({
