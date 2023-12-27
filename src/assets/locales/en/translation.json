@@ -75,9 +75,20 @@
 		"pageBack": "Previous Page",
 		"changeNameAndPassword": "Change Name And  Password",
 		"sucessfulyUpdated": "Sucessfuly Updated",
-		"sureAboutThis": "Are You Sure About This",
+		"sureAboutThis": "Are You Sure About This ?",
 		"yes": "Yes",
-		"no": "خیر",
-		"sucessfylySaved": "Sucessfyly Saved"
+		"no": "No",
+		"sucessfylySaved": "Sucessfyly Saved",
+		"lastName": "Last Name",
+		"name": "Name",
+		"repeatNewPassword": "Repeat New Password",
+		"email": "Email",
+		"metaAdmin": "Super Admin",
+		"confirm": "Confirm",
+		"cancell": "Cancell"
+	},
+	"title": {
+		"systemAdminDescription1": "1- Any user added is recognized as a system admin and has access to system changes.",
+		"systemAdminDescription2": "2- Please note that a user recognized as a super admin has the capability to add and remove other admins."
 	}
 }

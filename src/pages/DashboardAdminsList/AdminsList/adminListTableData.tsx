@@ -29,7 +29,7 @@ export function adminListTableData({ onChange }: any) {
 		},
 		{
 			id: '',
-			label: 'نام کاربری',
+			label: 'table.userName',
 			type: 'username',
 			function: false,
 			style: 'px-3 w-2/12   ',
@@ -38,7 +38,7 @@ export function adminListTableData({ onChange }: any) {
 		},
 		{
 			id: '',
-			label: 'ایمیل',
+			label: 'table.email',
 			type: 'email',
 			function: false,
 			style: 'px-3 w-2/12   ',
@@ -47,7 +47,7 @@ export function adminListTableData({ onChange }: any) {
 		},
 		{
 			id: '',
-			label: 'نام و نام خانوادگی',
+			label: 'table.firstNameLastName',
 			type: ['first_name', 'last_name'],
 			function: false,
 			style: 'px-3 w-2/12   ',
@@ -56,7 +56,7 @@ export function adminListTableData({ onChange }: any) {
 		},
 		{
 			id: '',
-			label: 'فعال',
+			label: 'table.active',
 			type: 'is_active',
 			function: false,
 			style: 'px-3 w-2/12   ',
@@ -66,7 +66,7 @@ export function adminListTableData({ onChange }: any) {
 		},
 		{
 			id: '',
-			label: 'سوپر ادمین',
+			label: 'table.metaAdmin',
 			type: 'is_meta_admin',
 			function: booleanIcon,
 			style: 'px-3 w-2/12   ',
@@ -75,7 +75,7 @@ export function adminListTableData({ onChange }: any) {
 		},
 		{
 			id: '',
-			label: 'تاریخ ایجاد',
+			label: 'table.dateOfCreated',
 			type: 'created_at',
 			dir: 'rtl',
 			icon: false,
@@ -86,7 +86,7 @@ export function adminListTableData({ onChange }: any) {
 		},
 		{
 			id: '',
-			label: 'آخرین ورود',
+			label: 'table.lastLogin',
 			type: 'last_login',
 			dir: 'rtl',
 			icon: false,

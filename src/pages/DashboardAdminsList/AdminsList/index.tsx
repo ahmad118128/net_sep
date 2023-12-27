@@ -19,39 +19,11 @@ import { createAPIEndpoint } from '@src/helper/utils';
 import { debounce } from 'lodash';
 import { API_USERS_DELETE } from '@src/services/users';
 import { BaseTable } from '@ui/molecules/BaseTable';
-import { persianDateAndNumber } from '@src/helper/utils/dateUtils';
-import { booleanIcon } from './utils';
-import { UserAdminAction } from './UserAdminAction';
 import { adminListTableData } from './adminListTableData';
+import { useTranslation } from 'react-i18next';
 
 const PAGE_SIZE = 10;
 const PAGE = 1;
-
-// const headerItem: StringifyProperties<IUser> = {
-// 	id: '',
-// 	email: 'ایمیل',
-// 	last_login: 'آخرین ورود',
-// 	username: 'نام کاربری',
-// 	first_name: 'نام و نام خانوادگی',
-// 	is_active: 'فعال',
-// 	created_at: 'تاریخ ایجاد',
-// 	is_meta_admin: 'سوپر ادمین',
-// 	last_name: '',
-
-// 	is_superuser: 'boolean',
-// 	exceeded_usage: 'boolean',
-// 	base_url: 'string',
-// 	is_staff: 'boolean',
-// 	date_joined: 'string',
-// 	http_port: 'number',
-// 	https_port: 'number',
-// 	time_limit_duration: 'ETimeLimitDuration',
-// 	time_limit_value_in_hour: 'number',
-// 	last_uptime: 'string',
-// 	is_running: 'boolean',
-// 	exceeded_time_limit: 'boolean',
-// 	usage_in_minute: 'number',
-// };
 
 export function AdminsList() {
 	const [currentPage, setCurrentPage] = useState<number>(PAGE);
@@ -60,6 +32,7 @@ export function AdminsList() {
 	const [deleteModal, setDeleteModal] = useState(false);
 	const [openUpdateModal, setOpenUpdateModal] = useState(false);
 	const [loadingButtonModal, setLoadingButtonModal] = useState(false);
+	const { t } = useTranslation();
 
 	const endpoint = createAPIEndpoint({
 		endPoint: E_USERS,
@@ -141,7 +114,6 @@ export function AdminsList() {
 		// }
 	}
 
-	console.log(activeAdmin, 'ACTION   =>');
 	const handleCreateAdmin = () => {
 		activeAdmin && setActiveAdmin(undefined);
 		setOpenUpdateModal(true);
@@ -156,7 +128,7 @@ export function AdminsList() {
 					onChange={handleFilterChange}
 					className="w-1/4"
 				/>
-				<ToolTip tooltip="اضافه کردن ادمین جدید" position="right">
+				<ToolTip tooltip={t('table.addNewAdmin')} position="right">
 					<IconButton icon={plusIcon} color="teal" size="lg" onClick={handleCreateAdmin} />
 				</ToolTip>
 			</div>
@@ -178,14 +150,14 @@ export function AdminsList() {
 				open={deleteModal}
 				setOpen={setDeleteModal}
 				type="error"
-				title="از انجام این کار مطمئن هستید؟"
+				title={t('global.sureAboutThis')}
 				buttonOne={{
-					label: 'بله',
+					label: t('global.yes'),
 					onClick: handleOnDeleteFileType,
 					loading: loadingButtonModal,
 				}}
 				buttonTow={{
-					label: 'خیر',
+					label: t('global.no'),
 					onClick: () => setDeleteModal(false),
 					color: 'red',
 				}}

@@ -1,6 +1,5 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { API_DAAS_DELETE, API_DAAS_UPDATE } from '@src/services/users';
-import { ETimeLimitDuration } from '@src/services/users/types';
 import { IDaAs } from '@src/services/users/types';
 import { Modal } from '@ui/molecules/Modal';
 import { toast } from 'react-toastify';
@@ -15,7 +14,6 @@ import { SettingDaasModal } from './SettingDaasModal';
 
 import { desktopTableData } from '../desktopTableData';
 import { BaseTable } from '@ui/molecules/BaseTable';
-import { IHeaderDaasCard } from './types';
 import { createAPIEndpoint } from '@src/helper/utils';
 import { debounce } from 'lodash';
 import { SearchInput } from '@ui/atoms/Inputs/SearchInput';
@@ -51,37 +49,6 @@ function compareExtensionLists(oldList?: string[], newList?: string[]) {
 
 const PAGE_SIZE = 8;
 const PAGE = 1;
-
-// const headerItem: IHeaderDaasCard = {
-// 	email: t('table.email'),
-// 	http_port: 'پورت http',
-// 	https_port: 'پورت https',
-// 	created_at: 'string',
-// 	last_uptime: 'string',
-// 	is_lock: 'دسکتاپ',
-// 	daas_configs: {
-// 		is_globally_config: t('table.accessSettingsTime'),
-// 		can_upload_file: 'تنظیمات دسترسی',
-// 		can_download_file: '',
-// 		clipboard_down: '',
-// 		clipboard_up: '',
-// 		time_limit_duration: ETimeLimitDuration.DAILY,
-// 		time_limit_value_in_hour: '',
-// 		max_transmission_download_size: '0',
-// 		max_transmission_upload_size: '0',
-// 		webcam_privilege: 'false',
-// 		microphone_privilege: 'false',
-// 	},
-// 	is_running: 'وضعیت',
-// 	usage_in_minute: 'زمان استفاده شده',
-// 	extra_allowed_download_files: '',
-// 	extra_allowed_upload_files: '',
-// 	forbidden_upload_files: '',
-// 	forbidden_download_files: '',
-// 	allowed_files_type_for_download: '',
-// 	allowed_files_type_for_upload: '',
-// 	daas_version: 'نسخه دسکتاپ',
-// };
 
 export function DaAsList() {
 	const [currentPage, setCurrentPage] = useState<number>(PAGE);
