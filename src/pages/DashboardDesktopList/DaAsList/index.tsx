@@ -11,7 +11,6 @@ import Pagination from '@ui/molecules/Pagination';
 import { ResetAllAccessTime } from './ResetAllAccessTime';
 import { ActionOnClickActionsType } from './DaAsCard/types';
 import { SettingDaasModal } from './SettingDaasModal';
-
 import { desktopTableData } from '../desktopTableData';
 import { BaseTable } from '@ui/molecules/BaseTable';
 import { createAPIEndpoint } from '@src/helper/utils';

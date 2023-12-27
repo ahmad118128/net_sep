@@ -1,12 +1,8 @@
 import trashIcon from '@iconify-icons/ph/trash';
 import { SetAccessTime } from '@src/pages/DashboardDesktopList/DaAsList/DaAsCard/SetAccessTime';
-import { AccessUplaodEdit } from './DaAsCard/SetAccessUpload/AceessUploadEdit';
-import { DaAsCard } from './DaAsCard';
-import { LoadingSpinner } from '@ui/molecules/Loading';
-import { NoResult } from '@ui/molecules/NoResult';
 import gear from '@iconify-icons/ph/gear';
 
-export function desktopTableData({ onChange, t }: any) {
+export function desktopTableData({ onChange }: any) {
 	return [
 		{
 			id: '',

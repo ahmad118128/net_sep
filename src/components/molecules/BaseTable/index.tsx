@@ -3,7 +3,6 @@ import { Card, Typography } from '@ui/atoms';
 import { LoadingSpinner } from '../Loading';
 import { NoResult } from '../NoResult';
 import { CircleBg } from '@ui/atoms/CircleBg';
-
 import { IconButton } from '@ui/atoms/BaseButton';
 import { useTranslation } from 'react-i18next';
 
