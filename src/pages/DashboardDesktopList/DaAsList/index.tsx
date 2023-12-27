@@ -1,7 +1,4 @@
-import { useCallback, useState } from 'react';
-import { LoadingSpinner } from '@ui/molecules/Loading';
-import { NoResult } from '@ui/molecules/NoResult';
-import { DaAsCard } from './DaAsCard';
+import { useCallback, useEffect, useState } from 'react';
 import { API_DAAS_DELETE, API_DAAS_UPDATE } from '@src/services/users';
 import { ETimeLimitDuration } from '@src/services/users/types';
 import { IDaAs } from '@src/services/users/types';
@@ -16,11 +13,13 @@ import { ResetAllAccessTime } from './ResetAllAccessTime';
 import { ActionOnClickActionsType } from './DaAsCard/types';
 import { SettingDaasModal } from './SettingDaasModal';
 
+import { desktopTableData } from '../desktopTableData';
+import { BaseTable } from '@ui/molecules/BaseTable';
 import { IHeaderDaasCard } from './types';
 import { createAPIEndpoint } from '@src/helper/utils';
 import { debounce } from 'lodash';
 import { SearchInput } from '@ui/atoms/Inputs/SearchInput';
-import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 function compareExtensionLists(oldList?: string[], newList?: string[]) {
 	const removedList: string[] = [];
@@ -53,36 +52,36 @@ function compareExtensionLists(oldList?: string[], newList?: string[]) {
 const PAGE_SIZE = 8;
 const PAGE = 1;
 
-const headerItem: IHeaderDaasCard = {
-	email: t('table.email'),
-	http_port: 'پورت http',
-	https_port: 'پورت https',
-	created_at: 'string',
-	last_uptime: 'string',
-	is_lock: 'دسکتاپ',
-	daas_configs: {
-		is_globally_config: t('tabel.accessSettingsTime'),
-		can_upload_file: 'تنظیمات دسترسی',
-		can_download_file: '',
-		clipboard_down: '',
-		clipboard_up: '',
-		time_limit_duration: ETimeLimitDuration.DAILY,
-		time_limit_value_in_hour: '',
-		max_transmission_download_size: '0',
-		max_transmission_upload_size: '0',
-		webcam_privilege: 'false',
-		microphone_privilege: 'false',
-	},
-	is_running: 'وضعیت',
-	usage_in_minute: 'زمان استفاده شده',
-	extra_allowed_download_files: '',
-	extra_allowed_upload_files: '',
-	forbidden_upload_files: '',
-	forbidden_download_files: '',
-	allowed_files_type_for_download: '',
-	allowed_files_type_for_upload: '',
-	daas_version: 'نسخه دسکتاپ',
-};
+// const headerItem: IHeaderDaasCard = {
+// 	email: t('table.email'),
+// 	http_port: 'پورت http',
+// 	https_port: 'پورت https',
+// 	created_at: 'string',
+// 	last_uptime: 'string',
+// 	is_lock: 'دسکتاپ',
+// 	daas_configs: {
+// 		is_globally_config: t('table.accessSettingsTime'),
+// 		can_upload_file: 'تنظیمات دسترسی',
+// 		can_download_file: '',
+// 		clipboard_down: '',
+// 		clipboard_up: '',
+// 		time_limit_duration: ETimeLimitDuration.DAILY,
+// 		time_limit_value_in_hour: '',
+// 		max_transmission_download_size: '0',
+// 		max_transmission_upload_size: '0',
+// 		webcam_privilege: 'false',
+// 		microphone_privilege: 'false',
+// 	},
+// 	is_running: 'وضعیت',
+// 	usage_in_minute: 'زمان استفاده شده',
+// 	extra_allowed_download_files: '',
+// 	extra_allowed_upload_files: '',
+// 	forbidden_upload_files: '',
+// 	forbidden_download_files: '',
+// 	allowed_files_type_for_download: '',
+// 	allowed_files_type_for_upload: '',
+// 	daas_version: 'نسخه دسکتاپ',
+// };
 
 export function DaAsList() {
 	const [currentPage, setCurrentPage] = useState<number>(PAGE);
@@ -95,6 +94,8 @@ export function DaAsList() {
 	const [openSettingModal, setOpenSettingModal] = useState(false);
 
 	const [loadingButtonModal, setLoadingButtonModal] = useState(false);
+
+	const { t } = useTranslation();
 
 	const endpoint = createAPIEndpoint({
 		endPoint: E_USERS_DAAS,
@@ -245,16 +246,11 @@ export function DaAsList() {
 				/>
 				<ResetAllAccessTime />
 			</div>
-			<DaAsCard daas={headerItem} isHeader />
-			{isLoading ? (
-				<LoadingSpinner />
-			) : listDaas.length > 0 ? (
-				listDaas.map((item) => (
-					<DaAsCard key={item.id} daas={item} onClickActions={handleOnClickActions} />
-				))
-			) : (
-				<NoResult />
-			)}
+			<BaseTable
+				headers={desktopTableData({ onchange: handleOnClickActions, t })}
+				data={listDaas}
+				onClick={handleOnClickActions}
+			/>
 			{!!countPage && (
 				<Pagination
 					currentPage={currentPage}
