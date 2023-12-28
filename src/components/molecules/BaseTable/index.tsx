@@ -47,27 +47,27 @@ export function BaseTable(props) {
 							{headers.map((header, i) => (
 								<div
 									key={i}
-									className={`${header.style} flex justify-center items-center uppercase `}
+									className={`${header.style} flex justify-center items-center  `}
 									dir={!header.dir ? 'ltr' : header.dir}>
-									{header.status ? (
-										<CircleBg bgColor={item[header.type] ? 'bg-green-600' : 'bg-gray-400'} />
-									) : (
-										<Typography
-											size="body3"
-											type="div"
-											className="text-xl uppercase whitespace-no-wrap break-all ">
-											{Array.isArray(header.type)
-												? header.type.map((i, index) => (
-														<React.Fragment key={index}>
-															{index > 0 && ' '}
-															<span className="">{item[i]}</span>
-														</React.Fragment>
-												  ))
-												: header.function
-												? header.function(item[header.type])
-												: typeCondition(header.type, item)}
-										</Typography>
+									{header.status && (
+										<CircleBg bgColor={item[header.type] ? 'bg-green-600' : 'bg-red-600'} />
 									)}
+									<Typography
+										size="body3"
+										type="div"
+										className="text-xl  whitespace-no-wrap break-all ">
+										{Array.isArray(header.type)
+											? header.type.map((i, index) => (
+													<React.Fragment key={index}>
+														{index > 0 && ' '}
+														<span className="">{item[i]}</span>
+													</React.Fragment>
+											  ))
+											: header.function
+											? header.function(item[header.type])
+											: typeCondition(header.type, item)}
+									</Typography>
+
 									{header.type === 'component' && <header.component {...props} item={item} />}
 									{header.type === 'action' &&
 										header.actions.map((action, index) => (
