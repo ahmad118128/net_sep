@@ -22,7 +22,7 @@ export function scannedFileListTableData() {
 		{
 			label: 'table.numberOfScans',
 			type: 'yara_scanner_status',
-			status: 'is_running',
+			status: 'yara_scan_result',
 			function: false,
 			style: 'px-3 w-2/12 uppercase',
 			size: '',
@@ -31,7 +31,7 @@ export function scannedFileListTableData() {
 		{
 			label: 'table.userStatus',
 			type: 'clamav_scanner_status',
-			status: 'is_running',
+			status: 'clamav_scan_result',
 			component: '',
 			function: false,
 			style: 'px-3 w-2/12 uppercase',
@@ -41,7 +41,7 @@ export function scannedFileListTableData() {
 		{
 			label: 'table.userStatus',
 			type: 'antiviruses_scanner_status',
-			status: 'is_running',
+			status: 'antiviruses_scan_result',
 			component: '',
 			function: false,
 			style: 'px-3 w-2/12 uppercase',

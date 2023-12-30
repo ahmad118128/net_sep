@@ -50,7 +50,7 @@ export function BaseTable(props) {
 									className={`${header.style} flex justify-center items-center  `}
 									dir={!header.dir ? 'ltr' : header.dir}>
 									{header.status && (
-										<CircleBg bgColor={item[header.type] ? 'bg-green-600' : 'bg-red-600'} />
+										<CircleBg bgColor={item[header.status] ? 'bg-green-600' : 'bg-red-600'} />
 									)}
 									<Typography
 										size="body3"
