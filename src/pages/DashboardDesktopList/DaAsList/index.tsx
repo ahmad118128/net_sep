@@ -90,7 +90,6 @@ export function DaAsList() {
 		action: ActionOnClickActionsType,
 		daas?: Partial<IDaAs> | string
 	): any {
-		console.log(action, daas);
 		if (action === 'mutate') {
 			console.log('RUNNN mutate');
 			mutate();
@@ -117,7 +116,6 @@ export function DaAsList() {
 			setOpenModal(true);
 		}
 	}
-
 	const handleOnRequests = async () => {
 		if (!activeDaas) return;
 

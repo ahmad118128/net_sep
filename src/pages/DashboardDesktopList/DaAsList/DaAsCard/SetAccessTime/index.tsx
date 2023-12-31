@@ -130,7 +130,7 @@ export function SetAccessTime({
 	return (
 		<div className="w-full flex justify-center">
 			{!isEditable ? (
-				<Card color="white" className="px-2 h-6 w-64 ">
+				<Card color="white" className="px-2 h-6 w-60 ">
 					<div className="flex items-center justify-between  h-full">
 						<div className="flex items-center justify-between text-teal-600">
 							<Typography size="body3" color="teal">

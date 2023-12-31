@@ -49,15 +49,16 @@ export function monitoringTableData() {
 			size: '',
 			scroll: '',
 		},
+
 		{
+			id: '',
 			label: 'table.userStatus',
 			type: 'is_running',
-			status: 'is_running',
-			component: '',
-			function: false,
-			style: 'px-3 w-2/12   ',
-			size: '',
-			scroll: '',
+			status: {
+				load: 'CircleBg',
+				key: 'is_running',
+				color: ['bg-green-600', 'bg-gray-400'],
+			},
 		},
 	];
 }

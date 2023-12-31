@@ -41,7 +41,7 @@ export function desktopTableData({ onChange }: any) {
 			),
 
 			function: false,
-			style: 'px-3 w-3/12   ',
+			style: 'px-3 w-4/12',
 			size: '',
 			scroll: '',
 		},
@@ -61,7 +61,7 @@ export function desktopTableData({ onChange }: any) {
 			label: 'table.desktop',
 			type: 'actionLock',
 			function: false,
-			style: 'px-3 w-3/12 ',
+			style: 'px-3 w-1/12 ',
 			size: '',
 			scroll: '',
 		},
@@ -78,21 +78,12 @@ export function desktopTableData({ onChange }: any) {
 		{
 			id: '',
 			label: 'table.status',
-			type: 'action',
-			actions: [
-				{
-					action: 'delete',
-					icon: trashIcon,
-					color: 'redNoBg',
-					style: '',
-				},
-				{
-					action: 'edit',
-					icon: gear,
-					color: 'neutralNoBg',
-					style: '',
-				},
-			],
+			type: 'is_running',
+			status: {
+				load: 'CircleBg',
+				key: 'is_running',
+				color: ['bg-green-600', 'bg-gray-400'],
+			},
 			component: '',
 			function: false,
 			style: 'px-3 w-2/12   ',
@@ -102,7 +93,11 @@ export function desktopTableData({ onChange }: any) {
 		{
 			id: '',
 			label: 'table.defaultSetting',
-			type: '',
+			type: 'check',
+			status: {
+				load: 'check',
+				key: 'daas_configs',
+			},
 			component: '',
 			function: false,
 			style: 'px-3 w-2/12   ',

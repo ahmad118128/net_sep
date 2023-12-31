@@ -1,16 +1,14 @@
-import React from 'react';
 import { Typography } from '@ui/atoms';
 import { CircleBg } from '@ui/atoms/CircleBg';
 
-function CircleBGBorder({ icon, title }) {
+export function CircleBGBorder({ icon, title }) {
+	console.log(icon, title);
 	return (
-		<Typography size="body3" type="div" className="px-3 w-2/12 text-center break-words uppercase">
-			<span className="flex justify-around items-center border rounded-md">
+		<>
+			<span className="flex justify-between items-center border rounded-md px-3 gap-4">
 				<CircleBg bgColor={icon} />
-				{title}
+				<Typography size="body3">{title}</Typography>
 			</span>
-		</Typography>
+		</>
 	);
 }
-
-export default CircleBGBorder;

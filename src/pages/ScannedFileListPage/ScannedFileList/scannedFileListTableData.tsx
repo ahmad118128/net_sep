@@ -22,7 +22,10 @@ export function scannedFileListTableData() {
 		{
 			label: 'table.numberOfScans',
 			type: 'yara_scanner_status',
-			status: 'yara_scan_result',
+			status: {
+				load: 'CircleBgBorder',
+				key: 'yara_scan_result',
+			},
 			function: false,
 			style: 'px-3 w-2/12 uppercase',
 			size: '',
@@ -31,7 +34,10 @@ export function scannedFileListTableData() {
 		{
 			label: 'table.userStatus',
 			type: 'clamav_scanner_status',
-			status: 'clamav_scan_result',
+			status: {
+				load: 'CircleBgBorder',
+				key: 'clamav_scan_result',
+			},
 			component: '',
 			function: false,
 			style: 'px-3 w-2/12 uppercase',
@@ -41,7 +47,10 @@ export function scannedFileListTableData() {
 		{
 			label: 'table.userStatus',
 			type: 'antiviruses_scanner_status',
-			status: 'antiviruses_scan_result',
+			status: {
+				load: 'CircleBgBorder',
+				key: 'antiviruses_scan_result',
+			},
 			component: '',
 			function: false,
 			style: 'px-3 w-2/12 uppercase',

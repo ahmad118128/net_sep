@@ -58,9 +58,14 @@ export function adminListTableData({ onChange }: any) {
 			id: '',
 			label: 'table.active',
 			type: 'is_active',
+			status: {
+				load: 'CircleBg',
+				key: 'is_active ',
+				color: ['bg-green-600', 'bg-gray-400'],
+			},
+
 			function: false,
 			style: 'px-3 w-2/12   ',
-			status: 'is_active',
 			size: '',
 			scroll: '',
 		},

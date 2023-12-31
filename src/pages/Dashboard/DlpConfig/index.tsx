@@ -26,16 +26,6 @@ import { useTranslation } from 'react-i18next';
 const PAGE_SIZE = 3;
 const PAGE = 1;
 
-// const headerItem: StringifyProperties<IFileType> = {
-// 	id: '',
-// 	file_type: t('table.fileType'),
-// 	allowed_for_upload: t('table.allowedForUpload'),
-// 	allowed_for_download: t('table.allowedForDownload'),
-// 	is_active: t('table.active'),
-// 	created_at: t('table.dateOfCreated'),
-// 	updated_at: t('table.dateOfUpdated'),
-// };
-
 export function DlpConfig() {
 	const [currentPage, setCurrentPage] = useState<number>(PAGE);
 	const [filterQuery, setFilterQuery] = useState<string>('');
@@ -149,6 +139,7 @@ export function DlpConfig() {
 					<IconButton icon={plusIcon} color="teal" size="lg" onClick={handleCreateNewType} />
 				</ToolTip>
 			</div>
+
 			<FileTypeCard fileType={headerItem} isHeader />
 			{isLoading ? (
 				<LoadingSpinner />
