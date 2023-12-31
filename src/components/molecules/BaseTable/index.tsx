@@ -81,7 +81,7 @@ export function BaseTable(props) {
 												}
 											/>
 										)}
-									{header.status.load === 'CircleBgBorder' && <CircleBGBorder icon={} />}
+									{/* {header.status.load === 'CircleBgBorder' && <CircleBGBorder icon={} />} */}
 
 									{header.type === 'component' && <header.component {...props} item={item} />}
 									{header.type === 'action' &&
