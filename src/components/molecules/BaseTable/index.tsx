@@ -5,10 +5,13 @@ import { NoResult } from '../NoResult';
 import { CircleBg } from '@ui/atoms/CircleBg';
 import { IconButton } from '@ui/atoms/BaseButton';
 import { useTranslation } from 'react-i18next';
+import CircleBGBorder from './CircleBGBorder';
 
 export function BaseTable(props) {
 	const { headers, data, loading, onClick } = props;
 	const { t } = useTranslation();
+
+	const defaultIconColor = ['bg-green-600', 'bg-red-600'];
 
 	const typeCondition = (key: string, data: any) => {
 		if (key === 'usage_in_minute') {
@@ -49,9 +52,6 @@ export function BaseTable(props) {
 									key={i}
 									className={`${header.style} flex justify-center items-center  `}
 									dir={!header.dir ? 'ltr' : header.dir}>
-									{header.status && (
-										<CircleBg bgColor={item[header.status] ? 'bg-green-600' : 'bg-red-600'} />
-									)}
 									<Typography
 										size="body3"
 										type="div"
@@ -67,6 +67,21 @@ export function BaseTable(props) {
 											? header.function(item[header.type])
 											: typeCondition(header.type, item)}
 									</Typography>
+									{header.status &&
+										!header.status.load(
+											<CircleBg
+												bgColor={
+													item[header.status.key || header.status]
+														? header.status?.color
+															? header.status?.color[0]
+															: defaultIconColor[0]
+														: header.status?.color
+														? header.status?.color[1]
+														: defaultIconColor[1]
+												}
+											/>
+										)}
+									{header.status.load === 'CircleBgBorder' && <CircleBGBorder icon={} />}
 
 									{header.type === 'component' && <header.component {...props} item={item} />}
 									{header.type === 'action' &&
