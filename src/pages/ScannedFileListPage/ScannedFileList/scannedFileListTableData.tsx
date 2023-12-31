@@ -22,26 +22,16 @@ export function scannedFileListTableData() {
 		{
 			label: 'table.numberOfScans',
 			type: 'yara_scanner_status',
-			status: {
-				load: 'CircleBgBorder',
-				key: 'yara_scan_result',
-				color: ['bg-red-600', 'bg-green-600'],
-				ui: 'hhh',
-			},
+			status: 'yara_scan_result',
 			function: false,
-			style: 'px-3 w-2/12 uppercase ',
+			style: 'px-3 w-2/12 uppercase',
 			size: '',
 			scroll: '',
 		},
 		{
 			label: 'table.userStatus',
 			type: 'clamav_scanner_status',
-			status: {
-				load: 'CircleBgBorder',
-				key: 'clamav_scan_result',
-				color: ['bg-red-600', 'bg-green-600'],
-				ui: 'hhh',
-			},
+			status: 'clamav_scan_result',
 			component: '',
 			function: false,
 			style: 'px-3 w-2/12 uppercase',
@@ -51,12 +41,7 @@ export function scannedFileListTableData() {
 		{
 			label: 'table.userStatus',
 			type: 'antiviruses_scanner_status',
-			status: {
-				load: 'CircleBgBorder',
-				key: 'antiviruses_scan_result',
-				color: ['bg-red-600', 'bg-green-600'],
-				ui: 'hhh',
-			},
+			status: 'antiviruses_scan_result',
 			component: '',
 			function: false,
 			style: 'px-3 w-2/12 uppercase',
@@ -82,8 +67,3 @@ export function scannedFileListTableData() {
 		},
 	];
 }
-const Ui = (prpos) => {
-	return (
-		<span className="flex justify-around items-center border rounded-md">{prpos.children}</span>
-	);
-};
