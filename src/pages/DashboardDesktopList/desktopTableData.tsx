@@ -59,17 +59,16 @@ export function desktopTableData({ onChange }: any) {
 		{
 			id: '',
 			label: 'table.desktop',
-			type: '',
-			component: '',
+			type: 'actionLock',
 			function: false,
-			style: 'px-3 w-2/12   ',
+			style: 'px-3 w-3/12 ',
 			size: '',
 			scroll: '',
 		},
 		{
 			id: '',
 			label: 'table.desktopV',
-			type: '',
+			type: 'daas_version',
 			component: '',
 			function: false,
 			style: 'px-3 w-2/12   ',
@@ -79,7 +78,21 @@ export function desktopTableData({ onChange }: any) {
 		{
 			id: '',
 			label: 'table.status',
-			type: '',
+			type: 'action',
+			actions: [
+				{
+					action: 'delete',
+					icon: trashIcon,
+					color: 'redNoBg',
+					style: '',
+				},
+				{
+					action: 'edit',
+					icon: gear,
+					color: 'neutralNoBg',
+					style: '',
+				},
+			],
 			component: '',
 			function: false,
 			style: 'px-3 w-2/12   ',

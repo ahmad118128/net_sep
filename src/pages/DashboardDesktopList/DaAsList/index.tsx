@@ -90,18 +90,22 @@ export function DaAsList() {
 		action: ActionOnClickActionsType,
 		daas?: Partial<IDaAs> | string
 	): any {
+		console.log(action, daas);
 		if (action === 'mutate') {
+			console.log('RUNNN mutate');
 			mutate();
 			return;
 		}
 
 		if (action === 'edit') {
+			console.log('RUNNN edit');
 			setActiveDaas(daas as IDaAs);
 			setOpenSettingModal(true);
 			return;
 		}
 
 		if (action === 'editLock') {
+			console.log('RUNNN');
 			setActiveDaas(daas as IDaAs);
 			setOpenModal(true);
 			return;

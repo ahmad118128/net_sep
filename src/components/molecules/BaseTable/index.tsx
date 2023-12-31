@@ -5,6 +5,7 @@ import { NoResult } from '../NoResult';
 import { CircleBg } from '@ui/atoms/CircleBg';
 import { IconButton } from '@ui/atoms/BaseButton';
 import { useTranslation } from 'react-i18next';
+import { ButtonLockAction } from './ButtonLockAction';
 
 export function BaseTable(props) {
 	const { headers, data, loading, onClick } = props;
@@ -77,6 +78,9 @@ export function BaseTable(props) {
 												onClick={() => onClick(action.action, item)}
 											/>
 										))}
+									{header.type === 'actionLock' && (
+										<ButtonLockAction onclick={onClick} user={item} />
+									)}
 								</div>
 							))}
 						</Card>
