@@ -19,7 +19,22 @@ import { loginString as strings } from './string';
 
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '@context/settings/languageContext';
+import ToolTip from '@ui/atoms/Tooltip';
+import { DropDownWithIcon } from '@ui/atoms/DropDownWithIcon';
+import languageIcon from '@iconify-icons/ph/globe-hemisphere-west-fill';
 
+export const languageOptions = [
+	{
+		id: 'fa',
+		label: 'farsi',
+		value: 'farsi',
+	},
+	{
+		id: 'en',
+		label: 'english',
+		value: 'english',
+	},
+];
 export function LoginForm() {
 	const [error, setError] = useState<string | null>(null);
 	const [loadingButton, setLoadingButton] = useState(false);
@@ -75,10 +90,17 @@ export function LoginForm() {
 			<div className="absolute top-[-6rem]">
 				<Avatar icon={userIcon} intent="grey" size="lg" />
 			</div>
+			<DropDownWithIcon
+				icon={languageIcon}
+				name={'language'}
+				size="xs"
+				onSelect={(v) => changeLanguage(v)}
+				options={languageOptions}
+			/>
 			<Typography color="neutral" size="h5" className="mb-5">
 				{t('login.loginTitle')}
 			</Typography>
-			<BaseButton label="change language " onClick={changeLanguage} />
+
 			{/* <div>
 				<ul>
 					{Object.keys(locales).map((locale) => (
