@@ -5,7 +5,7 @@ import moreIcon from '@iconify-icons/ph/dots-three-outline-fill';
 import { CircleBg } from '@ui/atoms/CircleBg';
 import { Link } from 'react-router-dom';
 import { ROUTES_PATH } from '@src/routes/routesConstants';
-import { persianDateAndNumber } from '@src/helper/utils/dateUtils';
+import { dateAndNumber } from '@src/helper/utils/dateUtils';
 import { IHeaderDaasCard } from '@src/pages/DashboardDesktopList/DaAsList/types';
 import { UserScanCount } from './UserScanCount';
 
@@ -43,7 +43,7 @@ export function UserDaAsCard({ daas, isHeader }: ProductCardProps) {
 					size="body3"
 					type="div"
 					className="px-3 w-4/12 text-center break-words uppercase">
-					{!isHeader ? persianDateAndNumber(daas.created_at) : daas.created_at}
+					{!isHeader ? dateAndNumber(daas.created_at) : daas.created_at}
 				</Typography>
 
 				<div className="px-3 w-2/12 flex justify-center text-center break-words">

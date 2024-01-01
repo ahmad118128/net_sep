@@ -20,7 +20,6 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
 		return storedLang || 'fa';
 	});
 	const newLang = lang === 'fa' ? 'en' : 'fa';
-	console.log(lang);
 
 	const changeLanguage = (l: string) => {
 		setLang(l || newLang);

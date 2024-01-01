@@ -15,11 +15,8 @@ import userIcon from '@iconify-icons/ph/user';
 import signInBoldIcon from '@iconify-icons/ph/sign-in-bold';
 
 import { ILoginFieldValues } from '../types';
-import { loginString as strings } from './string';
-
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '@context/settings/languageContext';
-import ToolTip from '@ui/atoms/Tooltip';
 import { DropDownWithIcon } from '@ui/atoms/DropDownWithIcon';
 import languageIcon from '@iconify-icons/ph/globe-hemisphere-west-fill';
 
@@ -56,7 +53,7 @@ export function LoginForm() {
 					return;
 				}
 				setUser(data);
-				toast.success(strings.loginSuccess);
+				toast.success(t('global.logedInSuccessfuly'));
 				navigate(ROUTES_PATH.dashboard);
 			})
 			.catch((err) => {
@@ -86,17 +83,19 @@ export function LoginForm() {
 	return (
 		<form
 			onSubmit={handleSubmit(handelSubmitForm)}
-			className="flex flex-col items-center w-full mt-auto">
+			className="flex flex-col items-center w-full mt-auto ">
 			<div className="absolute top-[-6rem]">
 				<Avatar icon={userIcon} intent="grey" size="lg" />
 			</div>
-			<DropDownWithIcon
-				icon={languageIcon}
-				name={'language'}
-				size="xs"
-				onSelect={(v) => changeLanguage(v)}
-				options={languageOptions}
-			/>
+			<div className="absolute top-[1rem] right-[1rem] ">
+				<DropDownWithIcon
+					icon={languageIcon}
+					name={'language'}
+					size="ls"
+					onSelect={(v) => changeLanguage(v)}
+					options={languageOptions}
+				/>
+			</div>
 			<Typography color="neutral" size="h5" className="mb-5">
 				{t('login.loginTitle')}
 			</Typography>

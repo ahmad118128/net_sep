@@ -6,7 +6,7 @@ import notePencilIcon from '@iconify-icons/ph/note-pencil';
 
 import { OnClickActionsType } from './types';
 import { booleanIcon } from '../utils';
-import { persianDateAndNumber } from '@src/helper/utils/dateUtils';
+import { dateAndNumber } from '@src/helper/utils/dateUtils';
 import { IUser } from '@src/services/users/types';
 import { CircleBg } from '@ui/atoms/CircleBg';
 
@@ -78,13 +78,13 @@ export function UserAdminCard({ user, isHeader, onClickActions }: UserAdminCardP
 					size="body3"
 					type="div"
 					className="px-3 w-2/12 text-center break-words uppercase">
-					{!isHeader ? persianDateAndNumber(user.created_at) : user.created_at}
+					{!isHeader ? dateAndNumber(user.created_at) : user.created_at}
 				</Typography>
 				<Typography
 					size="body3"
 					type="div"
 					className="px-3 w-2/12 text-center break-words uppercase">
-					{!isHeader ? persianDateAndNumber(user.last_login) : user.last_login}
+					{!isHeader ? dateAndNumber(user.last_login) : user.last_login}
 				</Typography>
 			</Card>
 		</>

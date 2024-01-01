@@ -45,12 +45,15 @@
 		"moreDetail": "More Details",
 		"removeSelected": "Remove Selected",
 		"daily": "Daily",
+		"weekly": "Weekly",
 		"monthly": "Monthly",
 		"temporary": "Temporary",
 		"permanently": "Permanently",
 		"fileType": "File Type",
 		"allowedForUpload": "Allowed For Upload",
-		"allowedForDownload": "Allowed For Download"
+		"allowedForDownload": "Allowed For Download",
+		"thisWeek": " This Week",
+		"thisMonth": "This Month"
 	},
 	"dashboard": {
 		"adminLists": "Admin Lists",
@@ -91,7 +94,8 @@
 		"restart": "Restart",
 		"acessTimeModalDescription1": "This user's access time will be reset. Are you sure you want to do this?",
 		"select": "Select",
-		"selectHour": "Select The Hour"
+		"selectHour": "Select The Hour",
+		"logedInSuccessfuly": "You Loged in Successfuly."
 	},
 	"title": {
 		"systemAdminDescription1": "1- Any user added is recognized as a system admin and has access to system changes.",

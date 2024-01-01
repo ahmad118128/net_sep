@@ -45,12 +45,15 @@
 		"moreDetail": "جزییات بیشتر",
 		"removeSelected": "حذف انتخاب",
 		"daily": "روزانه",
+		"weekly": "هفتگی",
 		"monthly": "ماهانه",
 		"temporary": "موقت",
 		"permanently": "دائمی",
 		"fileType": "تایپ فایل",
 		"allowedForUpload": "مجاز برای آپلود",
-		"allowedForDownload": "مجاز برای دانلود"
+		"allowedForDownload": "مجاز برای دانلود",
+		"thisWeek": "این هفته",
+		"thisMonth": "این ماه"
 	},
 	"dashboard": {
 		"adminLists": "لیست ادمین ها",
@@ -90,7 +93,8 @@
 		"hour": "ساعت",
 		"restart": "شروع مجدد",
 		"select": "انتخاب کنید",
-		"selectHour": "ساعت را وارد کنید"
+		"selectHour": "ساعت را وارد کنید",
+		"logedInSuccessfuly": ".ورود باموفقیت انجام شد"
 	},
 	"title": {
 		"systemAdminDescription1": "1- هرکاربری که اضافه میشود ، به عنوان ادمین سیستم شناخته و دسترسی برای تغییرات سامانه را دارد.",

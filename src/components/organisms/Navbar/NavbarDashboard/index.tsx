@@ -49,7 +49,7 @@ export function NavbarDashboard() {
 		<nav className="w-full bg-black px-8 2xl:container h-12">
 			<div className="flex items-center justify-between ">
 				<div className="flex items-center">
-					<ToolTip tooltip="خروج" position="bottom">
+					<ToolTip tooltip={t('global.exit')} position="bottom">
 						<IconButton
 							icon={signOutBoldIcon}
 							size="xl"
@@ -60,7 +60,7 @@ export function NavbarDashboard() {
 					</ToolTip>
 
 					{user?.is_superuser && (
-						<ToolTip tooltip="تنظیمات" position="bottom">
+						<ToolTip tooltip={t('global.setting')} position="bottom">
 							<IconButton
 								icon={gearIcon}
 								size="xl"
@@ -70,13 +70,12 @@ export function NavbarDashboard() {
 							/>
 						</ToolTip>
 					)}
-
 					<Avatar icon={userIcon} intent="primary" size="sm" className="ml-4" />
 					<DropDownWithIcon
 						icon={languageIcon}
 						name={'language'}
-						size="xs"
-						onSelect={(v) => changeLanguage(v)}
+						size="ls"
+						onSelect={(l) => changeLanguage(l)}
 						options={languageOptions}
 					/>
 					<div>

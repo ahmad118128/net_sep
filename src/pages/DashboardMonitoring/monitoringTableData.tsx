@@ -1,6 +1,6 @@
 import moreIcon from '@iconify-icons/ph/dots-three-outline-fill';
 import { ROUTES_PATH } from '@src/routes/routesConstants';
-import { persianDateAndNumber } from '@src/helper/utils/dateUtils';
+import { dateAndNumber } from '@src/helper/utils/dateUtils';
 import { UserScanCount } from './UsersDaAsList/UserDaAsCard/UserScanCount';
 export function monitoringTableData() {
 	return [
@@ -35,7 +35,7 @@ export function monitoringTableData() {
 			dir: 'rtl',
 			type: 'created_at',
 			component: '',
-			function: persianDateAndNumber,
+			function: dateAndNumber,
 			style: 'px-3 w-2/12   ',
 			size: '',
 			scroll: '',

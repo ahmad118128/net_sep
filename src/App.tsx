@@ -1,11 +1,10 @@
-import { Suspense, useMemo, useState, useEffect } from 'react';
+import { Suspense, useMemo, useState } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import routesConfig from '@src/routes/routesConfig';
 import { UserContext } from '@context/user/userContext';
 import { IUser } from './services/users/types';
 import { useLanguage } from '@context/settings/languageContext';
-import { useTranslation } from 'react-i18next';
 
 const router = createBrowserRouter(routesConfig);
 
@@ -21,7 +20,10 @@ function App() {
 				<Suspense>
 					<RouterProvider router={router} />
 				</Suspense>
-				<ToastContainer rtl={lang === 'fa'} style={{ direction: dir, fontSize: 20 }} />
+				<ToastContainer
+					position={lang === 'fa' ? 'top-right' : 'top-left'}
+					style={{ fontSize: 20 }}
+				/>
 			</div>
 		</UserContext.Provider>
 	);

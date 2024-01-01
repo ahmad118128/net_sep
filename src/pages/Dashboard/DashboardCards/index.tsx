@@ -1,4 +1,4 @@
-import { persianDateAndNumber, persianDayLabel } from '@src/helper/utils/dateUtils';
+import { dayLabel, dateAndNumber } from '@src/helper/utils/dateUtils';
 import { Card } from './Card';
 import { useNavigate } from 'react-router-dom';
 import calendarCheckIcon from '@iconify-icons/ph/calendar-check';
@@ -10,20 +10,18 @@ import shieldCheckIcon from '@iconify-icons/ph/shield-check';
 import { ROUTES_PATH } from '@src/routes/routesConstants';
 import { CardScanStats } from './CardScanStats';
 import { useTranslation } from 'react-i18next';
+import { useLanguage } from '@context/settings/languageContext';
 
 export function DashboardCards() {
 	const navigate = useNavigate();
 	const { user } = useUserContext();
 	const { t } = useTranslation();
+	const { lang } = useLanguage();
 
 	return (
 		<div className="grid w-full grid-cols-12 gap-16 mb-16">
 			<div className="col-span-10 md:col-span-6 xl:col-span-3">
-				<Card
-					icon={calendarCheckIcon}
-					title={persianDayLabel()}
-					description={persianDateAndNumber()}
-				/>
+				<Card icon={calendarCheckIcon} title={dayLabel()} description={dateAndNumber()} />
 			</div>
 
 			{user?.is_meta_admin && (

@@ -1,4 +1,4 @@
-import { persianDateAndNumber } from '@src/helper/utils/dateUtils';
+import { dateAndNumber } from '@src/helper/utils/dateUtils';
 import { booleanIcon } from './utils';
 import trashIcon from '@iconify-icons/ph/trash';
 import notePencilIcon from '@iconify-icons/ph/note-pencil';
@@ -7,6 +7,7 @@ export function adminListTableData({ onChange }: any) {
 	return [
 		{
 			id: '1',
+			rowType: 'status',
 			label: '',
 			type: 'action',
 			actions: [
@@ -29,6 +30,7 @@ export function adminListTableData({ onChange }: any) {
 		},
 		{
 			id: '',
+			rowType: 'none',
 			label: 'table.userName',
 			type: 'username',
 			function: false,
@@ -38,6 +40,7 @@ export function adminListTableData({ onChange }: any) {
 		},
 		{
 			id: '',
+			rowType: 'status',
 			label: 'table.email',
 			type: 'email',
 			function: false,
@@ -47,6 +50,7 @@ export function adminListTableData({ onChange }: any) {
 		},
 		{
 			id: '',
+			rowType: 'status',
 			label: 'table.firstNameLastName',
 			type: ['first_name', 'last_name'],
 			function: false,
@@ -56,6 +60,7 @@ export function adminListTableData({ onChange }: any) {
 		},
 		{
 			id: '',
+			rowType: 'status',
 			label: 'table.active',
 			type: 'is_active',
 			status: {
@@ -71,6 +76,7 @@ export function adminListTableData({ onChange }: any) {
 		},
 		{
 			id: '',
+			rowType: 'status',
 			label: 'table.metaAdmin',
 			type: 'is_meta_admin',
 			function: booleanIcon,
@@ -80,22 +86,24 @@ export function adminListTableData({ onChange }: any) {
 		},
 		{
 			id: '',
+			rowType: 'status',
 			label: 'table.dateOfCreated',
 			type: 'created_at',
 			dir: 'rtl',
 			icon: false,
-			function: persianDateAndNumber,
+			function: dateAndNumber,
 			style: ' w-2/12 break-words',
 			size: '',
 			scroll: '',
 		},
 		{
 			id: '',
+			rowType: 'status',
 			label: 'table.lastLogin',
 			type: 'last_login',
 			dir: 'rtl',
 			icon: false,
-			function: persianDateAndNumber,
+			function: dateAndNumber,
 			style: ' w-2/12 break-words',
 			size: '',
 			scroll: '',
