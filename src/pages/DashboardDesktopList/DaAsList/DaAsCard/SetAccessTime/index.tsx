@@ -17,6 +17,7 @@ import { TimeLimitDurationLabel } from '@src/constants/accessTime';
 import ToolTip from '@ui/atoms/Tooltip';
 import { Modal } from '@ui/molecules/Modal';
 import { OnClickActionsType } from '../types';
+import { useTranslation } from 'react-i18next';
 
 interface IUpdateDaasValues extends FieldValues {
 	time_limit_duration: ETimeLimitDuration;
@@ -64,6 +65,7 @@ export function SetAccessTime({
 	timeLimitDuration,
 	timeLimitValue,
 }: PropsType) {
+	const { t } = useTranslation();
 	const [isEditable, setIsEditable] = useState(false);
 	const [loadingButton, setLoadingButton] = useState(false);
 	const [loadingResetButton, setLoadingResetButton] = useState(false);
@@ -98,7 +100,7 @@ export function SetAccessTime({
 		})
 			.then(() => {
 				setIsEditable(false);
-				toast.success('با موفقیت بروزرسانی شد');
+				toast.success(t('global.sucessfulyUpdated'));
 				onClickActions && onClickActions('mutate');
 			})
 			.catch((err) => {
@@ -113,7 +115,7 @@ export function SetAccessTime({
 		setLoadingResetButton(true);
 		await API_DAAS_RESET_USAGE_DAAS(id)
 			.then(() => {
-				toast.success('با موفقیت تنظیم شد');
+				toast.success(t('global.successfulySet'));
 				onClickActions && onClickActions('mutate');
 				setOpenModalDelete(false);
 			})
@@ -141,7 +143,7 @@ export function SetAccessTime({
 							</div>
 							<Typography size="body3" color="teal">
 								{timeLimitDuration !== ETimeLimitDuration.PERMANENTLY
-									? `${timeLimitValue} ساعت`
+									? `${timeLimitValue} ${t('global.hour')}`
 									: '---'}
 							</Typography>
 						</div>
@@ -150,7 +152,7 @@ export function SetAccessTime({
 							color="tealNoBg"
 							onClick={() => setIsEditable(true)}
 						/>
-						<ToolTip tooltip="شروع مجدد">
+						<ToolTip tooltip={t('global.restart')}>
 							<IconButton
 								icon={clockCounterClockwiseIcon}
 								color="redNoBg"
@@ -161,14 +163,14 @@ export function SetAccessTime({
 							open={openModalDelete}
 							setOpen={setOpenModalDelete}
 							type="error"
-							title="زمان دسترسی این کاربر به حالت اول بر می گردد. از انجام این کار مطمئن هستید؟"
+							title={t('title.acessTimeModalDescription1')}
 							buttonOne={{
-								label: 'بله',
+								label: t('global.yes'),
 								onClick: handleOnResetAccess,
 								loading: loadingResetButton,
 							}}
 							buttonTow={{
-								label: 'خیر',
+								label: t('global.no'),
 								onClick: () => setOpenModalDelete(false),
 								color: 'red',
 							}}
@@ -185,7 +187,7 @@ export function SetAccessTime({
 						id="time_limit_duration"
 						name="time_limit_duration"
 						options={timeLimitDurationOptions}
-						placeHolder="انتخاب کنید"
+						placeHolder={t('global.select')}
 						containerClassName="col-span-6 xl:col-span-4"
 						rules={{
 							required: regexPattern.required,
@@ -200,7 +202,7 @@ export function SetAccessTime({
 								size="xs"
 								id="time_limit_value_in_hour"
 								name="time_limit_value_in_hour"
-								placeholder="ساعت را وارد کنید"
+								placeholder={t('global.selectHour')}
 								rules={{
 									required: regexPattern.required,
 									pattern: regexPattern.numbers,
@@ -212,7 +214,13 @@ export function SetAccessTime({
 					</div>
 
 					<div className="col-span-6 lg:col-span-4 flex justify-start items-center">
-						<BaseButton label="ثبت" submit size="sm" loading={loadingButton} className="ml-2" />
+						<BaseButton
+							label={t('global.confirm')}
+							submit
+							size="sm"
+							loading={loadingButton}
+							className="ml-2"
+						/>
 						<IconButton icon={xIcon} color="red" onClick={handleOnCancel} />
 					</div>
 				</form>

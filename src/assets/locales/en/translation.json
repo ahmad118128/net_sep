@@ -85,7 +85,13 @@
 		"email": "Email",
 		"metaAdmin": "Super Admin",
 		"confirm": "Confirm",
-		"cancell": "Cancell"
+		"cancell": "Cancell",
+		"successfulySet": "Successfuly Set",
+		"hour": "Hour",
+		"restart": "Restart",
+		"acessTimeModalDescription1": "This user's access time will be reset. Are you sure you want to do this?",
+		"select": "Select",
+		"selectHour": "Select The Hour"
 	},
 	"title": {
 		"systemAdminDescription1": "1- Any user added is recognized as a system admin and has access to system changes.",
